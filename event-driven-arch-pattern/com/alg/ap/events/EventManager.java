@@ -35,6 +35,12 @@ public class EventManager implements IEventManager {
 
 	@Override
 	public Event getEvent(String id) {
+		if(id.equals("cs"))
+			id = "ir";
+		else if(id.equals("sorter"))
+			id = "cs";
+		else if(id.equals(("ow")))
+			id = "sorter";
 		return event_queues.get(id).fetchEvent();
 	}
 	

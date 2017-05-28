@@ -20,8 +20,14 @@ public class OutputWriter extends Thread {
 			BufferedWriter bw = new BufferedWriter(new FileWriter(outfile));
 			while (true) {
 				Event event = eventManager.getEvent(id);
-				if (event == null)
+				System.out.println("Output writer receiving event:" + event);
+				if (event == null) {
+					try {
+						Thread.sleep(1000);
+					} catch (Exception e) {
+					}
 					continue;
+				}
 				if (event.getId() == -1) {
 					bw.close();
 					break;

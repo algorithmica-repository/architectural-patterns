@@ -22,9 +22,12 @@ public class InputReader extends Thread {
 			int count = 0;
 			while ((line = br.readLine()) != null) {
 				Event event = new Event(++count, id, line);
+				System.out.println("Input reader is posting event:" + event);
 				eventManager.postEvent(event);
 			}
-			eventManager.postEvent(new Event(-1,null, null));
+			Event event = new Event(-1,id, null);
+			eventManager.postEvent(event);
+			System.out.println("Input reader is posting event:" + event);
 		} catch (Exception e) {
 			System.out.println(e);
 		}
